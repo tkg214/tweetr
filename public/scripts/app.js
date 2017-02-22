@@ -1,57 +1,19 @@
-var data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-      },
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": {
-        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-      },
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": "Johann von Goethe",
-      "avatars": {
-        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-      },
-      "handle": "@johann49"
-    },
-    "content": {
-      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-    },
-    "created_at": 1461113796368
-  }
-];
-// sort by date created using sort function
-
 function renderTweets(tweets) {
   for (let tweet of tweets) {
-    $('.all-tweets').append(createTweetElement(tweet));
+    $('.all-tweets').prepend(createTweetElement(tweet));
   }
 }
 
+// Function finds age of post
+function getDaysOld(created) {
+  const oneDay = 24*60*60*1000;
+  const today = new Date();
+  const createdAt = new Date(created);
+  const diffDays = Math.round(Math.abs((today.getTime() - createdAt.getTime())/(oneDay)));
+  return diffDays;
+}
+
+// Function creates jQuery object to be used for rendering
 function createTweetElement(data) { // group things in order you use them
   // Create article element
   const $tweet = $('<article>').addClass('tweet');
@@ -65,7 +27,7 @@ function createTweetElement(data) { // group things in order you use them
   const $content = $('<div>').addClass('content').append($('<p>')).text(data.content.text); // good idea to use .text instead of .html
   // Create footer element
   const $footer = $('<footer>');
-  const $postage = $('<span>').text('CHANGE THIS');
+  const $postage = $('<span>').text(getDaysOld(data.created_at) + ' days old');
   const $heart = $('<img>').attr('src', 'https://image.flaticon.com/icons/svg/60/60993.svg').addClass('invisible');
   const $retweet = $('<img>').attr('src', 'https://d30y9cdsu7xlg0.cloudfront.net/png/18408-200.png').addClass('invisible');
   const $flag = $('<img>').attr('src', 'http://simpleicon.com/wp-content/uploads/flag.png').addClass('invisible');
@@ -75,6 +37,36 @@ function createTweetElement(data) { // group things in order you use them
   return $tweet;
 }
 
+// Sends Ajax post request to server for user tweet post
 $(function() {
-  renderTweets(data);
+  $('#tweet-submit').on('click', function (event) {
+    event.preventDefault();
+    const data = $(this).closest('form').serialize();
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data: data
+    }).then(function(data) {
+      console.log('WORKS!!!');
+    }).fail(function(err) {
+      alert('Your post was not successful!');
+    });
+  });
+});
+
+// Function that fetches tweets using Ajax get request and then renders tweets
+function fetchTweets() {
+  $.ajax({
+    url: '/tweets',
+    method: 'GET',
+  }).then(function(tweets) {
+    $('#tweet-submit').after(renderTweets(tweets));
+  }).fail(function(err) {
+    alert('Server Error')
+  });
+}
+
+// Sends Ajax get request to server to fetch tweets
+$(function() {
+  fetchTweets();
 });
