@@ -3,34 +3,31 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
-
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300i,400i,700,700i" rel="stylesheet" />
-
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
     <link rel="stylesheet" href="/styles/all-tweets.css" type="text/css">
-
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-
+    <script type="text/javascript" src="/scripts/compose-box-click.js"></script>
   </head>
-
   <body>
-
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png">
       <span class="header">Tweeter</span>
+      <div class="compose-box">
+        <img src="http://iconshow.me/media/images/ui/ios7-icons/png/512/compose_1.png" />
+        <span>Compose</span>
+      </div>
     </nav>
-
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
@@ -41,10 +38,8 @@
           <span class="counter">140</span>
         </form>
       </section>
-      <section class="all-tweets"> <!--make separate JS- vs CS- classes -->
-
+      <section class="all-tweets">
       </section>
     </main>
-
   </body>
 </html>

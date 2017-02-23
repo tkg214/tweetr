@@ -50,30 +50,33 @@ function fetchTweets() {
   });
 }
 
-// Sends Ajax post request to server for user tweet post
 $(function() {
   fetchTweets();
   $('#tweet-submit').on('click', function (event) {
     event.preventDefault();
     const postLength = $(this).closest('form').find('textarea').val().length;
     const data = $(this).closest('form').serialize();
-    const promisedTweet = $.ajax({
-      url: '/tweets',
-      method: 'POST',
-      data: data
-    });
+    // Post validated tweet, then get the tweet from server and prepend to feed
     if (postLength > 0 && postLength <= 140) {
-      promisedTweet.then(function(data) {
-        console.log('WORKS!!!');
+      $(this).closest('form').find('textarea').val('');
+      $.ajax({
+        url: '/tweets',
+        method: 'POST',
+        data: data
+      }).then(function(data) {
+        return $.ajax({
+          url: '/tweets',
+          method: 'GET'
+        });
+      }).then(function(tweets) {
+        $('.all-tweets').prepend(createTweetElement(tweets[tweets.length-1]));
+      }).fail(function(err) {
+        alert('Your post was not successful!');
       });
     } else if (postLength === 0) {
       alert('Your post needs to be over 0 characters.');
     } else if (postLength > 140) {
       alert('Your post needs to be 140 characters or less.');
-    } else {
-      promisedTweet.fail(function(err) {
-        alert('Your post was not successful!');
-      });
     }
   });
 });
