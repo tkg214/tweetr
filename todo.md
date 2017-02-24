@@ -1,16 +1,18 @@
 * Create registration page and insert details (username, unique handle, image, password (use bcrypt)) into new collection in tweeter db called user
-  * Use '/register' GET route that is accessible from the nav-bar if session_id does not exist
-  * POST request to '/register' then inserts details to user collection (validations must be handled)
+  * Use same GET route
+  * accessible from the nav-bar if session_id does not exist
+  * POST request to same route then inserts details to user collection (validations must be handled)
   * Must create new module like data-helpers.js
   * Must create new route like tweets.js specifically for registration
   * Redirect to '/'
+  ** maybe use a modal
 
 * Create login page that sends session/cookie (use cookieSession) (validations)
   * Must create new module like data-helpers.js
   * Must create new route like tweets.js
   * Login button only visible if session_id does not exist
 
-* Delete session once user is logged out using '/logout' route
+* Delete session once user is logged out using same route
   * Logout button only visible if session_id exists
 
 * Only be able to use app if session exists (user must be logged in), otherwise redirect and send error messages
@@ -24,3 +26,4 @@
 * Create user specific features based on session_id (delete tweet, update tweet, repost other user's tweets, flag tweet )
 
 ** in ajax request, how is the information organized in json to know user info??
+** how should the register form be organized
