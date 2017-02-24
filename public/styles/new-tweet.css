@@ -1,25 +1,44 @@
+/* line 2, ../sass/new-tweet.scss */
 .new-tweet {
   background-color: #eeeeee;
   border: 0.5px solid black;
   border-radius: 5px;
   display: none;
-  padding: 1em; }
+  padding: 1em;
+}
 
+/* line 10, ../sass/new-tweet.scss */
 .new-tweet .counter {
   float: right;
   font-size: 80%;
   font-style: italic;
-  position: relative; }
+  position: relative;
+}
 
+/* line 17, ../sass/new-tweet.scss */
 .new-tweet .red {
-  color: red; }
+  color: red;
+}
 
+/* line 21, ../sass/new-tweet.scss */
 .new-tweet h2 {
   border-bottom: 0.5px solid black;
-  margin-top: 0; }
+  margin-top: 0;
+}
 
+/* line 27, ../sass/new-tweet.scss */
 .new-tweet textarea {
   width: 100%;
-  padding: 0.5em; }
+  padding: 0.5em;
+}
 
-/*# sourceMappingURL=new-tweet.css.map */
+/* line 32, ../sass/new-tweet.scss */
+.errors p {
+  background-color: rgba(210, 90, 38, 0.6);
+  border-radius: 5px;
+  border: 0.5px solid #bf4423;
+  display: none;
+  font-size: 80%;
+  margin: 5px 0;
+  padding: 0.5em;
+}

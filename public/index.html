@@ -30,13 +30,29 @@
     </nav>
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <section class="registration">
+        <h2>Register to Tweeter</h2>
+        <form action="/register" method="POST">
+          <textarea id="username" name="name" placeholder="Your Name"></textarea>
+          <textarea id="handle" name="handle"
+
+        </form>
+      </section>
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form action="/" method="POST">
-          <textarea name="text" placeholder="What are you humming about?"></textarea>
+          <textarea id="tweet-content" name="text" placeholder="What are you humming about?"></textarea>
           <input id="tweet-submit" type="submit" value="Tweet">
           <span class="counter">140</span>
         </form>
+        <div class="errors">
+          <p id="empty">
+            Your Tweet must have content.
+          </p>
+          <p id="overlimit">
+            Your tweet must be 140 characters or less.
+          </p>
+        </div>
       </section>
       <section class="all-tweets">
       </section>

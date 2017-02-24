@@ -3,33 +3,43 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+/* line 6, ../sass/layout.scss */
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
+/* line 9, ../sass/layout.scss */
 *, *:before, *:after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 /*
  * Global layout stuff
  */
+/* line 17, ../sass/layout.scss */
 body {
   background-color: #eeeeee;
   color: black;
   font-family: 'Roboto Condensed', sans-serif;
-  margin: 0; }
+  margin: 0;
+}
 
+/* line 24, ../sass/layout.scss */
 main {
   background-color: white;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 140px 2em;
-  width: 450px; }
+  width: 450px;
+}
 
+/* line 33, ../sass/layout.scss */
 section {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+}
 
+/* line 37, ../sass/layout.scss */
 article {
-  margin-bottom: 10px; }
-
-/*# sourceMappingURL=layout.css.map */
+  margin-bottom: 10px;
+}

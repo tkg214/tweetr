@@ -28,3 +28,13 @@
   width: 100%;
   padding: 0.5em;
 }
+
+.errors p {
+  background-color: rgba(210, 90, 38, 0.6);
+  border-radius: 5px;
+  border: 0.5px solid rgb(191, 68, 35);
+  display: none;
+  font-size: 80%;
+  margin: 5px 0;
+  padding: 0.5em;
+}

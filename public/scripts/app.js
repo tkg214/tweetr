@@ -1,10 +1,3 @@
-// Function renders tweets and prepends each tweet element
-function renderTweets(tweets) {
-  for (let tweet of tweets) {
-    $('.all-tweets').prepend(createTweetElement(tweet));
-  }
-}
-
 // Function finds age of post to be used when creating tweet element
 function getDaysOld(created) {
   const oneDay = 24*60*60*1000;
@@ -36,6 +29,13 @@ function createTweetElement(data) { // group things in order you use them
   // Append to article element
   $tweet.append($header, $content, $footer);
   return $tweet;
+}
+
+// Function renders tweets and prepends each tweet element
+function renderTweets(tweets) {
+  for (let tweet of tweets) {
+    $('.all-tweets').prepend(createTweetElement(tweet));
+  }
 }
 
 // Function that fetches tweets using Ajax get request and then renders tweets
@@ -74,9 +74,17 @@ $(function() {
         alert('Your post was not successful!');
       });
     } else if (postLength === 0) {
-      alert('Your post needs to be over 0 characters.');
+      $('#empty').slideDown();
     } else if (postLength > 140) {
-      alert('Your post needs to be 140 characters or less.');
+      $('#overlimit').slideDown();
+    }
+  });
+  $('textarea').on('input', function(event) {
+    $('#empty').slideUp();
+    if ($(this).val().length <= 140) {
+      $('#overlimit').slideUp();
+    } else if ($(this).val().length > 140) {
+      $('#overlimit').slideDown();
     }
   });
 });
