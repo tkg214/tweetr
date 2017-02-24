@@ -14,6 +14,12 @@ app.use(compass());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: [process.env.SESSION_SECRET || 'development']
+}));
+
 const {MongoClient} = require("mongodb");
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
@@ -26,10 +32,10 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   const DataHelpers = require("./lib/data-helpers.js")(db)
   const tweetsRoutes = require("./routes/tweets")(DataHelpers);
   const registerRoute = require("./routes/register")(DataHelpers);
-  const registerRoute = require("./routes/login")(DataHelpers);
+  const loginRoute = require("./routes/login")(DataHelpers);
   app.use("/tweets", tweetsRoutes);
   app.use("/register", registerRoute);
-  app.use("/login", registerRoute);
+  app.use("/login", loginRoute);
 });
 
 app.listen(PORT, () => {

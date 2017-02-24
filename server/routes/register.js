@@ -21,6 +21,7 @@ module.exports = function(DataHelpers) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
     }
+
     const newUser = {
       name: req.body.name,
       avatars: {
@@ -28,8 +29,8 @@ module.exports = function(DataHelpers) {
         regular: req.body.avatar,
         large: req.body.avatar
       },
-      handle: req.body.handle,
-      password: bcrypt.hashSync(req.body.password, 10)
+      handle: req.body.reghandle,
+      password: bcrypt.hashSync(req.body.regpassword, 10)
     }
 
     DataHelpers.register(newUser, (err) => {
@@ -39,8 +40,7 @@ module.exports = function(DataHelpers) {
         res.status(201).send();
       }
     });
-
-    req.session.user_id = req.body.handle;
+    req.session.id = req.body.reghandle;
     res.redirect('/');
 
   });

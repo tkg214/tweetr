@@ -17,11 +17,11 @@ module.exports = function makeDataHelpers(db) {
     // Saves user info to 'db'
     register: function(newUser, callback) {
       db.collection("users").insert(newUser, callback);
-    }
+    },
 
     // Gets user info
     findUser: function(user, callback) {
-      db.collection("users").find(user)
+      db.collection("users").findOne(user, callback);
     }
   };
 }

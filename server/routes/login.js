@@ -3,7 +3,7 @@
 const userHelper    = require("../lib/util/user-helper")
 
 const express       = require('express');
-const registerRoute  = express.Router();
+const loginRoute  = express.Router();
 const app = express();
 
 const bcrypt = require('bcrypt');
@@ -22,8 +22,16 @@ module.exports = function(DataHelpers) {
       return;
     }
 
-
-    req.session.user_id = //req.body.handle;
+    DataHelpers.findUser({ "handle": req.body.loghandle }, (err, user) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else if (!(bcrypt.compareSync(req.body.logpassword, user.password))) {
+        res.status(403).send('Your email and password do not match.');
+      } else {
+        res.status(201).send();
+      }
+    });
+    req.session.id = req.body.loghandle;
     res.redirect('/');
 
   });

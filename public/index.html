@@ -33,11 +33,19 @@
       <section class="registration">
         <h2>Register to Tweeter</h2>
         <form action="/register" method="POST">
-          <input id="username" name="name" placeholder="Your Name"></input>
-          <input id="handle" name="handle" placeholder="Your Handle"></input>
-          <input id="avatar" name="avatar" placeholder="Your Avatar URL"></input>
-          <input id="password" name="password" placeholder="Your Password" type="password"></input>
+          <input class="name" name="name" placeholder="Your Name">
+          <input class="handle" name="reghandle" placeholder="Your Handle">
+          <input class="avatar" name="avatar" placeholder="Your Avatar URL">
+          <input class="password" name="regpassword" placeholder="Your Password" type="password">
           <input id="register-submit" type="submit" value="Register" />
+        </form>
+      </section>
+      <section class="login">
+        <h2>Login to Tweeter</h2>
+        <form action="/login" method="POST">
+          <input class="handle" name="loghandle" placeholder="Your Handle" />
+          <input class="password" name="logpassword" placeholder="Your Password" type="password">
+          <input id="login-submit" type="submit" value="Login" />
         </form>
       </section>
       <section class="new-tweet">
