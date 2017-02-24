@@ -1,25 +1,30 @@
+
 .new-tweet {
   background-color: #eeeeee;
-  border: 0.5px solid black;
+  border: 0.5px solid rgb(0, 0, 0);
   border-radius: 5px;
   display: none;
-  padding: 1em; }
+  padding: 1em;
+}
 
 .new-tweet .counter {
   float: right;
   font-size: 80%;
   font-style: italic;
-  position: relative; }
+  position: relative;
+}
 
 .new-tweet .red {
-  color: red; }
+  color: red;
+}
 
 .new-tweet h2 {
-  border-bottom: 0.5px solid black;
-  margin-top: 0; }
+  border-bottom: 0.5px solid rgb(0, 0, 0);
+  margin-top: 0;
+}
+
 
 .new-tweet textarea {
   width: 100%;
-  padding: 0.5em; }
-
-/*# sourceMappingURL=new-tweet.css.map */
+  padding: 0.5em;
+}
