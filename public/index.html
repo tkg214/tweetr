@@ -11,21 +11,29 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
     <link rel="stylesheet" href="/styles/all-tweets.css" type="text/css">
+    <link rel="stylesheet" href="/styles/registerlogin.css" type="text/css">
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-    <script type="text/javascript" src="/scripts/compose-box-click.js"></script>
+    <script type="text/javascript" src="/scripts/nav-box.js"></script>
+    <script type="text/javascript" src="/scripts/likes.js"></script>
   </head>
   <body>
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png">
       <span class="header">Tweeter</span>
-      <div class="compose-box">
+      <div class="nav-box compose-box">
         <img src="http://iconshow.me/media/images/ui/ios7-icons/png/512/compose_1.png" />
         <span>Compose</span>
+      </div>
+      <div class="nav-box login-box">
+        <span>Login</span>
+      </div>
+      <div class="nav-box register-box">
+        <span>Register</span>
       </div>
     </nav>
     <!-- Page-specific (main) content here -->
@@ -37,6 +45,7 @@
           <input class="handle" name="reghandle" placeholder="Your Handle">
           <input class="avatar" name="avatar" placeholder="Your Avatar URL">
           <input class="password" name="regpassword" placeholder="Your Password" type="password">
+          <input class="password-confirm" placeholder="Confirm Password" type="password">
           <input id="register-submit" type="submit" value="Register" />
         </form>
       </section>
@@ -50,7 +59,7 @@
       </section>
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form action="/" method="POST">
+        <form action="/tweets" method="POST">
           <textarea id="tweet-content" name="text" placeholder="What are you humming about?"></textarea>
           <input id="tweet-submit" type="submit" value="Tweet">
           <span class="counter">140</span>

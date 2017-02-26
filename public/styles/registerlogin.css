@@ -1,0 +1,41 @@
+/* line 1, ../sass/registerlogin.scss */
+.login {
+  background-color: #eeeeee;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  display: none;
+  padding: 1em;
+}
+
+/* line 9, ../sass/registerlogin.scss */
+.login h2 {
+  border-bottom: 0.5px solid black;
+  margin-top: 0;
+}
+
+/* line 15, ../sass/registerlogin.scss */
+.login input {
+  width: 100%;
+  padding: 0.5em;
+}
+
+/* line 20, ../sass/registerlogin.scss */
+.registration {
+  background-color: #eeeeee;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  display: none;
+  padding: 1em;
+}
+
+/* line 28, ../sass/registerlogin.scss */
+.registration h2 {
+  border-bottom: 0.5px solid black;
+  margin-top: 0;
+}
+
+/* line 34, ../sass/registerlogin.scss */
+.registration input {
+  width: 100%;
+  padding: 0.5em;
+}

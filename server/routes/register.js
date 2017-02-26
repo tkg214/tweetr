@@ -40,9 +40,9 @@ module.exports = function(DataHelpers) {
         res.status(201).send();
       }
     });
-    req.session.id = req.body.reghandle;
-    res.redirect('/');
 
+    req.session.id = req.body.reghandle;
+    
   });
 
   return registerRoute;

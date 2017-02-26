@@ -74,11 +74,11 @@
 }
 
 /* line 66, ../sass/all-tweets.scss */
-.tweet footer .invisible {
+.tweet footer .icon {
   display: none;
 }
 
 /* line 70, ../sass/all-tweets.scss */
-.tweet:hover footer .invisible {
+.tweet:hover footer .icon {
   display: block;
 }

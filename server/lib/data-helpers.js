@@ -20,8 +20,23 @@ module.exports = function makeDataHelpers(db) {
     },
 
     // Gets user info
-    findUser: function(user, callback) {
-      db.collection("users").findOne(user, callback);
+    findUser: function(handle, callback) {
+      db.collection("users").findOne(handle, callback);
+    },
+
+    // Update user likes
+    updateUserLikes: function(like, callback) {
+      db.collection("users").insert(like, callback);
+    },
+
+    // finds specific tweet
+    findTweet: function(tweet, callback) {
+      db.collection("tweets").findOne(tweet, callback);
+    },
+
+    // Update tweet likes
+    updateTweetLikes: function(like) {
+      db.collection("users").insert(like, callback);
     }
   };
 }

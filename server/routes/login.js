@@ -31,8 +31,8 @@ module.exports = function(DataHelpers) {
         res.status(201).send();
       }
     });
+
     req.session.id = req.body.loghandle;
-    res.redirect('/');
 
   });
 

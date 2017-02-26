@@ -4,6 +4,16 @@ const userHelper    = require("../lib/util/user-helper")
 
 const express       = require('express');
 const tweetsRoutes  = express.Router();
+const app = express();
+
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: [process.env.SESSION_SECRET || 'development']
+}));
 
 module.exports = function(DataHelpers) {
 
@@ -22,8 +32,7 @@ module.exports = function(DataHelpers) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
     }
-
-    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
+    const user = req.cookies.user ? req.cookies.user : userHelper.generateRandomUser();
     const tweet = {
       user: user,
       content: {
