@@ -3,6 +3,7 @@ $(function() {
   $('#nav-bar').on('click', '.compose-box', function(event) {
     event.preventDefault();
     event.stopPropagation();
+    $('.like-error').remove();
     const $newTweet = $(this).closest('body').find('.new-tweet');
     $newTweet.slideToggle();
     $newTweet.find('textarea').focus();

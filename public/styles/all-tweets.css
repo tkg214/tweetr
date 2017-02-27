@@ -3,7 +3,7 @@
   background-color: #eeeeee;
   border: 0.5px solid black;
   border-radius: 5px;
-  margin-top: 5px;
+  margin: 5px 0;
   padding: 0;
   z-index: 1;
   opacity: 0.6;
@@ -81,4 +81,14 @@
 /* line 70, ../sass/all-tweets.scss */
 .tweet:hover footer .icon {
   display: block;
+}
+
+/* line 74, ../sass/all-tweets.scss */
+.like-error p {
+  background-color: rgba(210, 90, 38, 0.6);
+  border-radius: 5px;
+  border: 0.5px solid #bf4423;
+  font-size: 80%;
+  margin: 5px 0;
+  padding: 0.5em;
 }

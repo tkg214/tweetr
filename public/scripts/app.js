@@ -22,10 +22,12 @@ function createTweetElement(data) { // group things in order you use them
   // Create footer element
   const $footer = $('<footer>');
   const $postage = $('<span>').text(getDaysOld(data.created_at) + ' days old');
+  const $likescount = $('<span>').data('likes', data.likes.length).addClass('likes');
+  $likescount.append($('<p>').text('Likes: ' + $likescount.data('likes')));
   const $heart = $('<img>').attr('src', 'https://image.flaticon.com/icons/svg/60/60993.svg').addClass('icon like');
   const $retweet = $('<img>').attr('src', 'https://d30y9cdsu7xlg0.cloudfront.net/png/18408-200.png').addClass('icon');
   const $flag = $('<img>').attr('src', 'http://simpleicon.com/wp-content/uploads/flag.png').addClass('icon');
-  $footer.append($postage, $heart, $retweet, $flag);
+  $footer.append($postage, $heart, $retweet, $flag, $likescount);
   // Append to article element
   $tweet.append($header, $content, $footer);
   return $tweet;
@@ -79,13 +81,15 @@ function createUserTools() {
   $('#nav-bar').append(createLogoutElement());
   $('#nav-bar').append(createUserInfoElement(user));
   $('.compose-box').show();
-  }).fail(function(err) {
-  });
+  }).fail(function(err) {});
 }
 
 $(function() {
 
-  createUserTools();
+  if (Cookies.get('user')) {
+    createUserTools();
+  }
+
   fetchTweets();
 
   // When clicking submit, tweet posts and feed is updated with new tweet

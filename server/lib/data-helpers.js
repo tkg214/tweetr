@@ -24,19 +24,19 @@ module.exports = function makeDataHelpers(db) {
       db.collection("users").findOne(handle, callback);
     },
 
-    // Update user likes
-    updateUserLikes: function(like, callback) {
-      db.collection("users").insert(like, callback);
+    // Update tweet like to user
+    updateUserLike: function(id, field, callback) {
+      db.collection("users").update(id, field, callback);
     },
 
     // finds specific tweet
-    findTweet: function(tweet, callback) {
-      db.collection("tweets").findOne(tweet, callback);
+    findTweet: function(query, callback) {
+      db.collection("tweets").findOne(query, callback);
     },
 
-    // Update tweet likes
-    updateTweetLikes: function(like) {
-      db.collection("users").insert(like, callback);
+    // Update user like to tweet
+    updateTweetLike: function(id, field, callback) {
+      db.collection("tweets").update(id, field, callback);
     }
   };
 }

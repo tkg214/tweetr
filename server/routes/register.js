@@ -30,7 +30,8 @@ module.exports = function(DataHelpers) {
         large: req.body.avatar
       },
       handle: req.body.reghandle,
-      password: bcrypt.hashSync(req.body.regpassword, 10)
+      password: bcrypt.hashSync(req.body.regpassword, 10),
+      likes: []
     }
 
     DataHelpers.register(newUser, (err) => {
@@ -42,7 +43,7 @@ module.exports = function(DataHelpers) {
     });
 
     req.session.id = req.body.reghandle;
-    
+
   });
 
   return registerRoute;
