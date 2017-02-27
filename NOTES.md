@@ -1,11 +1,12 @@
 * TODO:
-  * Only able to like others' tweets
+  * Only able to like others' tweets (DONE)
+  * fix server crash when login does not match (fix throw err)
   * registration validations needed (cannot have existing HANDLE only)
   * password confirmation on registration form
   * fix cookies issue in user route (sending both JSON and cookie but only need one)
   * fix error handling (user does not exist, password incorrect)
   * fix finding user upon login (search uses findOne but may return first result that is still not an identical match)
-  * implement SASS
+  * implement SASS (CSS is not DRY at all right now)
   * POSITIONING IS NOT OKAY
   * implement responsive design
   * REFACTOR code
